@@ -1,14 +1,17 @@
-var fs = require('fs'),
-    http = require('http');
+const fs = require("fs");
+const http = require("http");
+const path = require("path");
 
-http.createServer(function (req, res) {
-  fs.readFile(__dirname + req.url, function (err,data) {
-    if (err) {
-      res.writeHead(404);
-      res.end(JSON.stringify(err));
-      return;
-    }
-    res.writeHead(200);
-    res.end(data);
-  });
-}).listen(process.env.PORT || 3000);
+// app.js
+const express = require("express");
+
+// Create Express app
+const app = express();
+
+app.use(express.static("dist"));
+
+// A sample route
+app.get("/", express.static(path.join(__dirname, "/index.html")));
+
+// Start the Express server
+app.listen(process.env.PORT || 3000, () => console.log("Server running on port 3000!"));

@@ -41,12 +41,5 @@ module.exports = {
 	],
 	performance: {
 		maxAssetSize: 10000000
-	},
-	devServer: {
-		// open: true,
-		contentBase: path.join(__dirname, "dist"),
-		compress: true,
-		port: 1234,
-		host: "0.0.0.0"
 	}
 };
